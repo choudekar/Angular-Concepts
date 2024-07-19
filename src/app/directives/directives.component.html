@@ -1,0 +1,18 @@
+<p>directives works!</p>
+<h1 appHighlight>{{title | uppercase}}</h1>
+
+<div [ngStyle]="{'color':myColor,'font-size':fontSize+'px'}">
+    Sample text
+</div>
+<input [(ngModel)]="myColor">
+
+
+<button (click)="increaseSize()">+</button>
+
+<div [ngClass]="['one', 'two']">Classes of array</div>
+
+<div [ngClass]="'one two'"> Classes as string seperated by space</div>
+
+<div [ngClass]="{'one':true,'two':show}">Object of classes</div>
+
+<button class="btn btn-success" (click)="changeClass()">Change Class</button>

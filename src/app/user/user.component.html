@@ -1,0 +1,13 @@
+<h2>User Component</h2>
+
+<div>
+    <ul>
+        <ng-container>
+            <li *ngFor="let user of users; let i=index">{{user.email}}-{{i}}</li>
+        </ng-container>
+    </ul>
+</div>
+
+<input type="text" #username>
+<button (click)="login(username.value)">Login</button>
+<router-outlet></router-outlet>

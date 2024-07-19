@@ -1,0 +1,387 @@
+<h1 class=" text-7xl" #heading1>Hello {{title}} {{msg}}</h1>
+
+
+<!-- <input type="text" (ngModelChange)="logTitle()" [(ngModel)]="title"> -->
+
+
+
+
+<!-- <img [src]="imgUrl" alt=""> -->
+<div class="bg-white p-8 rounded-lg shadow-md w-96">
+    <h2 class="text-2xl font-bold mb-6">Login</h2>
+    <form #myForm="ngForm" (ngSubmit)="loginform2(myForm)">
+        <div class="mb-4">
+            <label for="usernameUp" class="block text-gray-700 font-bold mb-2">UserName</label>
+            <input type="text" id="usernameUp" name="usernameUp"
+                class="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+                placeholder="Enter user name " ngModel required="usernameUp" minlength="4">
+        </div>
+        <div class="mb-4">
+            <label for="passwordUp" class="block text-gray-700 font-bold mb-2">Password</label>
+            <input type="password" id="passwordUp" name="passwordUp"
+                class="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+                placeholder="Enter your password" required="passwordUp" ngModel>
+        </div>
+        <div class="mb-4">
+            <label for="cpassword" class="block text-gray-700 font-bold mb-2">Confirm Password</label>
+            <input type="password" id="cpassword" name="cpassword"
+                class="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+                placeholder="Enter your confirm password" (ngModelChange)="passwordCheck(myForm.value
+                .passwordUp,myForm.value.cpassword)" ngModel>
+        </div>
+        <div *ngIf="!passwordMatching" class="text-red-600">Password not matching</div>
+
+
+        <div class="flex items-center">
+            <input id="value1" name="value" type="checkbox" [ngModel]="isChecked" value="value1"
+                class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+            <label for="value1" class="ml-2 block text-sm text-gray-900">
+                Value 1
+            </label>
+        </div>
+        <div class="flex items-center">
+            <input id="value2" name="value" type="checkbox" value="value2"
+                class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+            <label for="value2" class="ml-2 block text-sm text-gray-900">
+                Value 2
+            </label>
+        </div>
+        <div class="flex items-center">
+            <input id="value3" name="value" type="checkbox" value="value3"
+                class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+            <label for="value3" class="ml-2 block text-sm text-gray-900">
+                Value 3
+            </label>
+        </div>
+        <label for="gender">Gender:</label>
+
+        <div class="flex items-center">
+            <input id="option1" name="options" type="radio" value="male"
+                class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+            <label for="option1" class="ml-2 block text-sm text-gray-900">
+                Male
+            </label>
+        </div>
+        <div class="flex items-center">
+            <input id="female" name="options" type="radio" value="Female"
+                class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+            <label for="female" class="ml-2 block text-sm text-gray-900">
+                Female
+            </label>
+        </div>
+        <div class="flex items-center">
+            <input id="Others" name="options" type="radio" value="Others"
+                class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+            <label for="Others" class="ml-2 block text-sm text-gray-900">
+                Others
+            </label>
+        </div>
+
+        <div class="inline-block relative">
+
+            <select
+                class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path
+                        d="M10 12.586l-4.293-4.293a1 1 0 00-1.414 1.414l5 5a1 1 0 001.414 0l5-5a1 1 0 00-1.414-1.414L10 12.586z" />
+                </svg>
+            </div>
+        </div>
+
+
+
+
+
+        <div>
+            <!-- my form {{ myForm.invalid}} -->
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                [disabled]="isButtonDisabled">Login</button>
+        </div>
+
+    </form>
+</div>
+
+Valid - {{myForm.valid}} Inavalid - {{myForm.invalid}} <br><br>
+
+touched- {{myForm.touched}} untouched - {{myForm.untouched}} <br><br>
+
+dirty- {{myForm.dirty}} pristine {{myForm.pristine}}
+
+
+
+
+<br><br>
+
+
+<br><br>
+<!-- <div>
+
+    <body class="bg-gray-200 h-screen flex justify-center items-center">
+        <div class="bg-white p-8 rounded shadow-md w-80">
+            <h2 class="text-2xl font-bold mb-4">Login</h2>
+            <form id="loginForm" action="#" method="POST">
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700 font-semibold">Email Address</label>
+                    <input type="email" id="email" name="email"
+                        class="w-full border-gray-300 rounded-md mt-1 px-4 py-2 focus:outline-none focus:ring focus:border-blue-300"
+                        required>
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="block text-gray-700 font-semibold">Password</label>
+                    <input type="password" id="password" name="password"
+                        class="w-full border-gray-300 rounded-md mt-1 px-4 py-2 focus:outline-none focus:ring focus:border-blue-300"
+                        required>
+                </div>
+                <div class="mb-4">
+                    <label for="confirmPassword" class="block text-gray-700 font-semibold">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword"
+                        class="w-full border-gray-300 rounded-md mt-1 px-4 py-2 focus:outline-none focus:ring focus:border-blue-300"
+                        required>
+                    <p id="passwordError" class="text-red-500 hidden">Passwords do not match.</p>
+                </div>
+                <button type="submit"
+                    class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-300">Login</button>
+            </form>
+        </div>
+
+        <script>
+            const form = document.getElementById('loginForm');
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+            const passwordError = document.getElementById('passwordError');
+
+            form.addEventListener('submit', function (event) {
+                if (passwordInput.value !== confirmPasswordInput.value) {
+                    event.preventDefault();
+                    passwordError.classList.remove('hidden');
+                }
+            });
+
+            confirmPasswordInput.addEventListener('input', function () {
+                if (passwordInput.value === confirmPasswordInput.value) {
+                    passwordError.classList.add('hidden');
+                }
+            });
+        </script>
+    </body>
+
+</div>  -->
+
+<br><br>
+
+<!-- <div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Login
+                </div>
+                <div class="card-body">
+                    <form #myForm2="ngForm" (ngSubmit)="onSubmit(myForm2)">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" placeholder="Enter username" ngModel>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password2" placeholder="Enter password"
+                                ngModel>
+                        </div>
+                        <button [disabled]="myForm2.invalid" type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+<br><br>
+<h2 class="text-4xl">{{name}}</h2>
+<button class="bg-lime-600 rounded-md ml-2" (click)="changeName()">changeName</button>
+
+<button [disabled]="isDisable" class="bg-indigo-500 ml-4 p-2 rounded-md text-white disabled:bg-gray-500"
+    (click)="handleClick()" (mouseover)="handleClick2($event)">Click</button>
+
+<div (copy)="handlleCopy()">Lorem ipsum, dolor sit amet consectetur
+    adipisicing elit. Molestiae, numquam.</div>
+
+<h1 id="h1" #heading>{{headingContent}}</h1>
+
+<button (click)="getHeading(heading)" class="bg-indigo-500 ml-4 p-2 rounded-md">getHeading</button>
+<br>
+fullName:<input type="text" #fullname (keyup)="getFullName(fullname.value)">
+
+<button (click)="getFullName(fullname.value)" class="bg-indigo-500 ml-4 p-2 rounded-md">Get Full Name</button>
+
+<br>
+
+<div *ngIf="!isLoggedIn">
+    <div>Welcome guest</div>
+    <button class="bg-indigo-500 ml-4 p-2 rounded-md" (click)="logIn()">Login</button>
+
+</div>
+<div *ngIf="isLoggedIn">
+    <div>Welcome back</div>
+    <button class="bg-indigo-500 ml-4 p-2 rounded-md" (click)="logOut()">LogOut</button>
+
+</div>
+<div>
+    <ul>
+        <ng-container *ngIf="isLoggedIn">
+            <li *ngFor="let user of users; let i=index">{{user}}-{{i}}</li>
+        </ng-container>
+        <li>
+            hari
+        </li>
+        <li>
+            ravi
+        </li>
+    </ul>
+</div>
+<div>
+    <table class="border-collapse border border-slate-400 ...">
+        <tr>
+            <td class="border border-slate-300 ...">1</td>
+            <td class="border border-slate-300 ...">2</td>
+            <td class="border border-slate-300 ...">3</td>
+        </tr>
+
+        <tr class="border border-slate-300 ...">
+            <td *ngFor="let movie of oldmovies">{{movie}}</td>
+        </tr>
+    </table>
+</div>
+
+<div>
+    <app-child #appChild [childTitle]="title">
+        <h1>Level 1 heading in child</h1>
+        <div>Lorem ipsum dolor sit amet.</div>
+
+
+    </app-child>
+</div>
+<br>
+<br>
+<!-- <div>
+    <app-registration></app-registration>
+
+</div> -->
+<!-- <div>
+    <img class="w-60 h-60 rounded-t-lg" [src]="'/assets/'+movies[0].img">
+    <h3 class="">{{movies[0].title}}</h3>
+    <div class="">{{movies[0].description}}</div>
+</div> -->
+<!-- <div>
+    <div class="max-w-64 border-2  border-gray-200 p-4 rounded-lg ">
+        <img class="w-60 h-60 rounded-t-lg" [src]="'/assets/'+ movies[0].img " alt="">
+        <h3 class="text-xl font-semibold my-2 "> {{ movies[0].title }} </h3>
+        <div> {{ movies[0].description }} </div>
+    </div>
+</div> -->
+<h1 class="text-center text-7xl text-blue-950">Movies</h1>
+<div class="m-4 p-4 grid grid-cols-4 gap-2">
+    <app-movie *ngFor="let m of movies" [movie]="m"></app-movie>
+</div>
+<h1 class="text-center text-7xl text-blue-950">Products</h1>
+<div class="m-2 p-2 grid grid-cols-3 gap-1">
+    <app-product *ngFor="let p of products" [product]="p"></app-product>
+</div>
+<div>
+    <input type="text">
+    <div>Lorem ipsum dolor sit amet.</div>
+</div>
+<div>
+    <app-login (sendFullname)="getFullName($event)" (sendPassword)="getPassword($event)"> </app-login>
+    <!-- <h3 class="text-4xl">Welcome to {{userName ? userName : "Guest"}}</h3>
+    <h3 class="text-4xl">Your Password is {{password ? password : "No Password"}}</h3> -->
+
+</div>
+
+<div>
+    <h3 class="text-2xl">Welcome to {{appService.userName ? appService.userName : "Guest"}}</h3>
+    <h3 class="text-2xl">Your Password is {{appService.password ? appService.password : "No password"}}</h3>
+</div>
+<div>
+    <h1 class="text-center text-5xl text-blue-950">Users From DummyJson</h1>
+</div>
+
+<ng-container *ngIf="!errorGettingUsers">
+    <div>
+        <table class="border-collapse border border-slate-400 ...">
+            <thead>
+                <tr>
+                    <th class="border border-slate-300 ...">Id</th>
+                    <th class="border border-slate-300 ...">Name</th>
+                    <th class="border border-slate-300 ...">Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of serverUsers">
+                    <td class="border border-slate-300 ...">{{user.id}}</td>
+                    <td class="border border-slate-300 ..."> {{user.name}}</td>
+                    <td class="border border-slate-300 ...">{{user.email}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</ng-container>
+
+<ng-container *ngIf="errorGettingUsers">
+    <div>Error Getting Users</div>
+</ng-container>
+
+
+
+<div>
+    <h1 class="text-center text-7xl text-blue-950">Movies From JSON File</h1>
+</div>
+<div class="m-4 p-4 grid grid-cols-4 gap-2">
+    <div *ngFor="let movie of jsonMovies">
+        <ng-container *ngIf="movie">
+            <div class="max-w-64 border-2  border-gray-200 p-4 rounded-lg ">
+                <img class="w-60 h-60 rounded-t-lg" [src]="'/assets/'+ movie.img " alt="">
+                <h3 class="text-xl font-semibold my-2 "> {{ movie.title }} </h3>
+                <div> {{ movie.description }} </div>
+            </div>
+        </ng-container>
+
+    </div>
+</div>
+
+<div>
+    <h1 class="text-center text-7xl text-blue-950">Product From JSON File</h1>
+</div>
+<div *ngFor="let prod of serverProducts.products">
+
+    {{prod.title}}
+
+</div>
+
+
+
+<div>
+    <app-todo></app-todo>
+</div>
+<div>
+    <div *ngFor="let product of currentData">
+        <img class="w-60 h-60 rounded-t-lg" [src]="'/assets/'+ product.images " alt="Image Not Available">
+        <!-- <img class="w-60 h-60 rounded-t-lg" [src]="'/assets/'+ product.thumbnail " alt="Image Not Available"> -->
+        <h3 class="text-xl font-semibold my-2 "> {{ product.id }} </h3>
+        <h3 class="text-xl font-semibold my-2 "> {{ product.title }} </h3>
+        <h5 class="text-2xl">price:-{{product.price}}</h5>
+        <div> {{ product.description }} </div>
+    </div>
+
+
+    <button class="bg-lime-600 rounded-md ml-2" type="button" (click)="ondecreaseThePages()"
+        [disabled]="perviweEnding()">Previous</button> |
+    <button class="bg-indigo-500 ml-4 p-2 rounded-md" type="button" (click)="onChangeNextPage()"
+        [disabled]=" disableNextButton()">Next</button>
+</div>

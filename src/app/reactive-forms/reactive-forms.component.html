@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="text-primary">Registration</h4>
+                    </div>
+                    <div class="card-body  bg-lime-300">
+                        <form [formGroup]="myForm">
+
+
+
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" id="username" placeholder="Enter username"
+                                    formControlName="userName">
+                                <span class="help-block text-red-600 border-red-500"
+                                    *ngIf="!myForm.get('userName')?.valid && myForm.get('userName')?.touched">
+                                    <span *ngIf="myForm.controls['userName'].errors">
+                                        <span *ngIf="myForm.controls['userName'].errors['required']">plase enter
+                                            required name</span>
+                                        <span *ngIf="myForm.controls['userName'].errors['pattern']">please
+                                            enter valid
+                                            name </span>
+                                        <!-- <span *ngIf="myForm.controls['userName'].errors['invalidUsername']">please
+                                            enter valid
+                                            name </span> -->
+                                        <span *ngIf="myForm.controls['userName'].errors['nameRestricted']">please
+                                            enter other than
+                                            Raj Kumar </span>
+                                        <span *ngIf="myForm.controls['userName'].errors['userName']">please
+                                            enter other than
+                                            Json File username </span>
+
+                                    </span>
+
+
+
+                                </span>
+                            </div>
+
+
+
+                            <!-- <div class="form-group">
+                                <label for="username">Username:</label>
+                                <input class="form-control" type="text" id="username" formControlName="userName">
+                                <div
+                                    *ngIf="myForm.get('userName')?.invalid && (myForm.get('username')?.dirty || myForm.get('username')?.touched)">
+                                    <div *ngIf="myForm.get('userName')?.errors.required">Username is required.</div>
+                                    <div *ngIf="myForm.get('userName')?.errors.invalidUsername">Invalid username format.</div>
+                                </div>
+                            </div> -->
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                                    placeholder="Enter email" formControlName="email">
+                                <small id="emailHelp" class="form-text text-blue-600">We'll never share your email with
+                                    anyone else.</small>
+                                <span class="help-block text-red-600 border-red-500"
+                                    *ngIf="!myForm.get('email')?.valid && myForm.get('email')?.touched">
+                                    <span *ngIf="myForm.controls['email'].errors">
+                                        <span *ngIf="myForm.controls['email'].errors['required']">email is
+                                            required</span>
+                                        <span *ngIf="myForm.controls['email'].errors['emailRestricted']">please enter
+                                            valid mail</span>
+                                    </span>
+                                </span>
+                            </div>
+
+
+                            <!-- <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="Enter password"
+                                    formControlName="password">
+                            </div> -->
+
+                            <div class="form-group">
+                                <label for="password">Password:</label>
+                                <input class="form-control" type="password" id="password" formControlName="password">
+                                <div class="text-red-500"
+                                    *ngIf="myForm.controls['password'].invalid && (myForm.controls['password'].dirty || myForm.controls['password'].touched)">
+                                    <div *ngIf="myForm.controls['password'].errors">
+                                        <span *ngIf="myForm.controls['password'].errors['required']">Password is
+                                            required
+                                        </span>
+                                        <span *ngIf="myForm.controls['password'].errors['invalidPassword']">Password
+                                            must
+                                            contain at least
+                                            one
+                                            special character and one number</span>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm Password</label>
+                                <input type="password" class="form-control" id="confirmPassword"
+                                    placeholder="Enter confirm password" formControlName="confirmPassword">
+                                <div class="text-red-500"
+                                    *ngIf="!passwordMatching && myForm.controls['confirmPassword'].dirty">
+                                    password not matching
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Gender</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" id="male" value="male"
+                                        formControlName="gender">
+                                    <label class="form-check-label" for="male">
+                                        Male
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" id="femalee"
+                                        value="female" formControlName="gender">
+                                    <label class="form-check-label" for="female">
+                                        Female
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" id="other" value="other">
+                                    <label class="form-check-label" for="other">
+                                        Other
+                                    </label>
+                                </div>
+                            </div>
+
+
+                            <div>
+                                <label for="rating">Rating</label>
+                                <input type="number" class="form-control" id="rating" placeholder="Enter rating"
+                                    formControlName="rating">
+                            </div>
+                            <div class="text-red-500"
+                                *ngIf="myForm.controls['rating'].dirty && myForm.controls['rating'].errors ">
+                                {{myForm.controls["rating"].errors["message"]}}
+                            </div>
+
+
+                            <!-- <div formGroupName="address">
+                                <div class="form-group">
+                                    <label for="city">City</label>
+                                    <input type="text" class="form-control" id="city" placeholder="Enter city"
+                                        formControlName="city">
+                                </div>
+                                <div class="form-group">
+                                    <label for="street">Street</label>
+                                    <input type="text" class="form-control" id="street" placeholder="Enter street"
+                                        formControlName="street">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="pin">Pin</label>
+                                    <input type="text" class="form-control" id="pin" placeholder="Enter pin"
+                                        formControlName="pin">
+                                </div>
+                            </div> -->
+
+                            <div class="form-group" formGroupName="presentAddress">
+                                <h2>Present Address</h2>
+                                <input class="form-control" type="text" formControlName="street" placeholder="Street" />
+                                <input class="form-control" type="text" formControlName="city" placeholder="City" />
+                                <input class="form-control" type="text" formControlName="state" placeholder="State" />
+                                <input class="form-control" type="text" formControlName="postalCode"
+                                    placeholder="Postal Code" />
+                            </div>
+                            <div class="form-group" formGroupName="permanentAddress">
+                                <h2>Permanent Address</h2>
+                                <input class="form-control" type="text" formControlName="street" placeholder="Street" />
+                                <input class="form-control" type="text" formControlName="city" placeholder="City" />
+                                <input class="form-control" type="text" formControlName="state" placeholder="State" />
+                                <input class="form-control" type="text" formControlName="postalCode"
+                                    placeholder="Postal Code" />
+                            </div>
+                            <div>
+                                <label>
+                                    <input class="form-check-input" type="checkbox" formControlName="sameAsPresent">
+                                    Same as
+                                    Present Address
+                                </label>
+                            </div>
+
+                            <div formArrayName="emails">
+                                <label class="form-label">Emails</label>
+                                <br>
+                                <div class="form-group mb-3" *ngFor="let email of emails.controls; let i=index;">
+
+                                    <input type="email" class="form-control" placeholder="Enter email"
+                                        [formControlName]="i">
+                                    <button *ngIf="i>0" type="button" class="btn btn-danger"
+                                        (click)="removeEmail(i)">remove</button>
+
+                                </div>
+                                <button type="button" class="btn btn-primary" (click)="addEmail()">Add Email</button>
+                            </div>
+
+
+
+
+
+
+                            <br><br>
+                            <div formArrayName="hobbies">
+                                <label class="form-label">Hobbies</label>
+                                <div>
+                                    <button class="btn btn-success" type="button" (click)="addHobies()">Add
+                                        Hobby</button>
+                                </div>
+                                <div class="form-group" *ngFor="let hobby of hobbyControls; let i=index ">
+                                    <input class="form-control" type="text" [formControlName]="i" />
+                                    <button *ngIf="i>0" type="button" class="btn btn-danger"
+                                        (click)="removeHobby(i)">remove</button>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label>CurrentAddress</label>
+                                <input class="form-control" type="text" formControlName="currentAddress"
+                                    placeholder="enter current address">
+                            </div>
+                            <div class="form-group">
+                                <label>PerminentAddress</label>
+                                <input class="form-control" type="text" formControlName="permAddress"
+                                    placeholder="enter permanent address">
+                            </div>
+
+                            <div>
+                                <label>
+                                    <input class="form-check-input" type="checkbox" formControlName="same">
+                                    Same as
+                                    current Address
+                                </label>
+                            </div>
+
+
+
+                            <br>
+                            <!-- <button (click)="handleAddress()" class="btn btn-success">Add</button> -->
+                            <button type="submit" class="btn btn-primary btn-block" (click)="handleForm()"
+                                (click)="handlefullAddress()">Login</button>
+                        </form>
+                        <br>
+
+                        <button class="btn btn-success" (click)="reset()">reset</button>
+                        <button class="btn btn-primary" (click)="setvalue()">SetValue</button>
+                        <button class="btn btn-dark" (click)="patchValue()">PatchValue</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

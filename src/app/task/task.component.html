@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-primary text-center ">Registration Form</h1>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <!-- <div class="card-header">
+                        <h4 class="text-primary text-center text-2xl">REGISTRATION FORM</h4>
+                    </div> -->
+                    <div class="card-body bg-lime-300">
+
+                        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+                            <!-- <div class="form-group">
+                                <label>First Name:</label>
+                                <input class="form-control" type="text" formControlName="firstName">
+                            </div> -->
+
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" class="form-control" id="firstname" placeholder="Enter First name"
+                                    formControlName="firstName">
+                                <span class="help-block text-red-600 border-red-500"
+                                    *ngIf="!registrationForm.get('firstName')?.valid && registrationForm.get('firstName')?.touched">
+                                    <span *ngIf="registrationForm.controls['firstName'].errors">
+                                        <span *ngIf="registrationForm.controls['firstName'].errors['required']">plase
+                                            enter
+                                            required name</span>
+                                        <span *ngIf="registrationForm.controls['firstName'].errors['pattern']">please
+                                            enter valid
+                                            name </span>
+
+
+                                    </span>
+
+
+
+                                </span>
+                            </div>
+                            <!-- <div
+                                *ngIf="registrationForm.get('firstName')?.invalid && registrationForm.get('firstName')?.touched">
+                                <p class="text-red-500">First Name is required.</p>
+                            </div> -->
+                            <div class="form-group">
+                                <label>Last Name:</label>
+                                <input class="form-control" type="text" formControlName="lastName"
+                                    placeholder="enter last name">
+                                <span class="help-block text-red-600 border-red-500"
+                                    *ngIf="!registrationForm.get('lastName')?.valid && registrationForm.get('lastName')?.touched">
+                                    <span *ngIf="registrationForm.controls['lastName'].errors">
+                                        <span *ngIf="registrationForm.controls['lastName'].errors['required']">plase
+                                            enter
+                                            required name</span>
+                                        <span *ngIf="registrationForm.controls['lastName'].errors['pattern']">please
+                                            enter valid
+                                            name </span>
+
+
+                                    </span>
+
+
+
+                                </span>
+                            </div>
+                            <!-- <div
+                                *ngIf="registrationForm.get('lastName')?.invalid && registrationForm.get('lastName')?.touched">
+                                <p class="text-red-500">Last Name is required.</p>
+                            </div> -->
+                            <div class="form-group">
+                                <label>Course:</label>
+                                <select class="form-control" formControlName="course">
+                                    <option value="" disabled selected hidden>Choose Course...</option>
+                                    <option *ngFor="let course of courses" [value]="course">{{ course }}
+                                    </option>
+                                </select>
+                            </div>
+
+                            <!-- <div class="form-group">
+                                <label>Password:</label>
+                                <input class="form-control" type="password" formControlName="password">
+                            </div>
+                            <div
+                                *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched">
+                                <p class="text-red-500">password should be 6 charcters</p>
+                            </div> -->
+                            <div class="form-group">
+                                <label for="password">Password:</label>
+                                <input class="form-control" type="password" id="password" formControlName="password"
+                                    placeholder="enter password">
+                                <div class="text-red-500"
+                                    *ngIf="registrationForm.controls['password'].invalid && (registrationForm.controls['password'].dirty || registrationForm.controls['password'].touched)">
+                                    <div *ngIf="registrationForm.controls['password'].errors">
+                                        <span *ngIf="registrationForm.controls['password'].errors['required']">Password
+                                            is
+                                            required
+                                        </span>
+                                        <span
+                                            *ngIf="registrationForm.controls['password'].errors['invalidPassword']">Password
+                                            must
+                                            contain at least
+                                            one
+                                            special character and one number</span>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Bank Name:</label>
+                                <select class="form-control" formControlName="bankName">
+                                    <option value="" disabled selected hidden>Choose Bank...</option>
+                                    <option *ngFor="let bank of banks" [value]="bank">{{ bank }}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Payment Mode:</label>
+                                <select class="form-control" formControlName="paymentMode">
+                                    <option value="" disabled selected hidden>Choose Payment Mode...</option>
+                                    <option *ngFor="let mode of paymentModes" [value]="mode">{{ mode }}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Card Number:</label>
+                                <input class="form-control" type="text" formControlName="cardNumber"
+                                    placeholder="enter card number">
+                            </div>
+                            <div
+                                *ngIf="registrationForm.get('cardNumber')?.invalid && registrationForm.get('cardNumber')?.touched">
+                                <p class="text-red-500">Card should have 16 numbers</p>
+                            </div>
+                            <div class="form-group">
+                                <label>CVV:</label>
+                                <input class="form-control" type="text" formControlName="cvv" placeholder="enter CVV">
+                            </div>
+                            <div *ngIf="registrationForm.get('cvv')?.invalid && registrationForm.get('cvv')?.touched">
+                                <p class="text-red-500">CVV should be 3 numbers</p>
+                            </div>
+                            <button type="submit" [disabled]="!registrationForm.valid"
+                                class="btn btn-primary btn-block">Submit</button>
+                        </form>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<h1 class="text-center text-5xl text-blue-950">Todos data From DummyJson</h1>
+<div>
+    <table class="border-collapse border border-slate-400 ...">
+        <thead>
+            <tr>
+                <th class="border border-slate-300 ...">Id</th>
+                <th class="border border-slate-300 ...">TodoName</th>
+                <th class="border border-slate-300 ...">Completed</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let todo of todos">
+                <td class="border border-slate-300 ..."> {{todo.id}}</td>
+                <td class="border border-slate-300 ...">{{todo.title}}</td>
+                <td class="border border-slate-300 ...">{{todo.completed}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+
+
+
+
+</div>

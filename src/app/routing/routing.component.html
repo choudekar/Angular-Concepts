@@ -1,0 +1,17 @@
+<p>routing works!</p>
+<div>Angular Menu</div>
+<div>
+    <a routerLink="/">home</a> |
+    <a routerLink="user">User</a> |
+    <a routerLink="user/id">UserId</a> |
+    <a routerLink="user/abc">UserABC</a> |
+    <a routerLink="user/xyz">UserXYZ</a> |
+    <a [routerLink]="['user',userid]">{{userid}}</a>|
+    <a routerLink="fskdhfk">Random</a> |
+    <a routerLink="/sub">Shared</a> |
+    <a routerLink="lazyone">LazyOne</a> |
+    <a routerLink="lazyTwo">LazyTwo</a> |
+
+
+</div>
+<router-outlet></router-outlet>

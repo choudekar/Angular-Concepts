@@ -1,0 +1,99 @@
+<p>pipes works!</p>
+
+<h1>{{title | uppercase}}</h1>
+<br>
+{{price | currency}}
+<br>
+{{price | currency : "INR"}}
+<br>
+{{price | currency : "AUD":true}}
+<br>
+{{price | currency : "AUD":false}}
+<br>
+{{price | currency : "USD"}}
+<br>
+<br>
+{{myNumber | number}}
+<br>
+{{myNumber| number:'5.5'}}
+<br>
+{{myNumber | number :'5.2-2'}}
+<br>
+{{myNumber | number :'1.1-1'}}
+<br>
+{{userDetails | json}}
+<br>
+{{cTime}}
+<br>
+<br>
+{{cTime | date}}
+<br>
+<br>
+{{cTime | date:'short'}}
+<br>
+<br>
+{{cTime | date:'medium'}}
+<br>
+shortDate
+<br>
+{{cTime | date:'shortDate'}}
+<br>
+mediumDate
+<br>
+{{cTime | date:'mediumDate'}}
+<br>
+
+longDate
+<br>
+{{cTime | date:'longDate'}}
+<br>
+fullDate
+<br>
+{{cTime | date:'fullDate'}}
+<br>
+
+shortTime
+<br>
+{{cTime | date:'shortTime'}}
+<br>
+mediumTime
+<br>
+{{cTime | date:'mediumTime'}}
+<br>
+For custom date format, we need to provide info as yyddMM type format
+<br>
+{{cTime| date:'dd-MMM-yy'}}
+<br>
+<br>
+{{cTime| date:'dd-MM-yy'}}
+<br>
+
+<div *ngFor="let user of users">
+    {{user.email | lowercase}}
+</div>
+<div *ngFor="let user of user$ | async">
+    {{user.email | uppercase}}
+</div>
+
+<div>
+    {{300 | kelvin | number}}
+</div>
+<div>
+    from custom pipe {{userDetails | custom}}
+</div>
+
+<div>
+    <input type="text" [(ngModel)]="userDetails.fullName">
+</div>
+<div>
+    from two way data binding :{{userDetails.fullName}}
+</div>
+<div>
+    Sort by: <input type="text" [(ngModel)]="sortBy">
+</div>
+<div *ngFor="let listing of listings | searching:sortBy">
+    Listing Id: {{listing.id}} Title: {{listing.title}}
+</div>
+<div>
+    {{getTemp(300)}}
+</div>

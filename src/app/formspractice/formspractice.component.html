@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Login Form</h4>
+                    </div>
+                    <div class="card-body bg-lime-300">
+                        <form #f="ngForm" (ngSubmit)="onSubmit()">
+                            <button class="btn btn-success" (click)="fillValues()">Fill Values</button>
+                            <div class="text-red-600" *ngIf="!userData.valid && userData.touched">Invalid data</div>
+                            <div ngModelGroup="userData" #userData="ngModelGroup">
+                                <div class="form-group">
+                                    <label for="email">Email:</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Enter email"
+                                        name="email" #email="ngModel" required="" email="email" ngModel>
+                                    <span class="text-red-600" *ngIf="!email.valid && email.touched">please enter valid
+                                        email</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input type="text" class="form-control" id="username" name="username"
+                                        ng-model="formData.username" required ngModel ng-minlength="5"
+                                        ng-maxlength="20">
+                                    <!-- <div *ngIf="f.touched"
+                                    ng-show="f.username.$invalid && (f.username.$dirty || f.$submitted)"
+                                    class="text-danger">
+                                    <div ng-show="f.username.$error.required">Username is required.</div>
+                                    <div ng-show="f.username.$error.minlength">Username must be at least 5
+                                        characters long.</div>
+                                    <div ng-show="f.username.$error.maxlength">Username cannot exceed 20
+                                        characters.</div>
+                                </div> -->
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password:</label>
+                                <input type="password" class="form-control" id="password" placeholder="Enter password"
+                                    name="password" required ngModel>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm Password:</label>
+                                <input type="password" class="form-control" id="confirmPassword"
+                                    placeholder="Confirm password" name="confirmpassword" (ngModelChange)="passwordCheck(f.value
+                                    .password,f.value.confirmpassword)" required ngModel>
+                            </div>
+                            <div *ngIf="!passwordMatching" class="text-red-500">Password not matching</div>
+                            <div class="form-group">
+                                <label>Gender:</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" id="male" value="male"
+                                        ngModel>
+                                    <label class="form-check-label" for="male">
+                                        Male
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" id="femalee"
+                                        value="female" ngModel>
+                                    <label class="form-check-label" for="femalee">
+                                        Female
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" id="other" value="other"
+                                        ngModel>
+                                    <label class="form-check-label" for="other">
+                                        Other
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Languages Known:</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="java" value="java" name="java"
+                                        ngModel>
+                                    <label class="form-check-label" for="java">
+                                        Java
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="python" value="python"
+                                        name="python" ngModel>
+                                    <label class="form-check-label" for="python">
+                                        Python
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="javascript" value="javascript"
+                                        name="javascript" ngModel>
+                                    <label class="form-check-label" for="javascript">
+                                        JavaScript
+                                    </label>
+                                </div>
+                                <!-- Add more checkboxes for other languages as needed -->
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="qualification">Select Education Qualification:</label>
+                                <select class="form-control" id="qualification" name="qualification"
+                                    [ngModel]="qualification">
+                                    <option value="">Select Option</option>
+                                    <option value="high_school">High School</option>
+                                    <option value="diploma">Diploma</option>
+                                    <option value="bachelor">Bachelor's Degree</option>
+                                    <option value="master">Master's Degree</option>
+                                    <option value="phd">Ph.D.</option>
+                                    <!-- Add more options for other qualifications as needed -->
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleTextarea" class="form-label">About</label>
+                                <textarea class="form-control" id="exampleTextarea" rows="3" name="about"
+                                    [(ngModel)]="about"></textarea>
+                            </div>
+                            <div>{{about}}</div>
+
+                            <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Submit</button>
+                        </form>
+                        invalid-{{f.invalid}} valid-{{f.valid}}
+
+                    </div>
+                    <div>
+                        <h3>User details</h3>
+                        <div>{{user.username}}</div>
+                        <div>{{user.email}}</div>
+                        <div>{{user.passowrd}}</div>
+                        <div>{{user.gender}}</div>
+                        <div>{{user.qualification}}</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
